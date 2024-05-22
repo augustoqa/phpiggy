@@ -10,7 +10,7 @@ class Router
 
     public function add(string $method, string $path) {
         $path = $this->normalizePath($path);
-        
+
         $this->routes[] = [
             'path' => $path,
             'method' => strtoupper($method),
@@ -21,6 +21,7 @@ class Router
     {
         $path = trim($path, '/');
         $path = "/{$path}/";
+        $path = preg_replace('#[/]{2,}#', '/', $path);
 
         return $path;
     }

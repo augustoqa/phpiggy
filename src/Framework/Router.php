@@ -8,7 +8,8 @@ class Router
 {
     private array $routes = [];
 
-    public function add(string $method, string $path, array $controller) {
+    public function add(string $method, string $path, array $controller)
+    {
         $path = $this->normalizePath($path);
 
         $this->routes[] = [
@@ -27,14 +28,14 @@ class Router
         return $path;
     }
 
-    public function dispatch(string $path, string $method) 
+    public function dispatch(string $path, string $method)
     {
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
 
-        foreach($this->routes as $route) {
+        foreach ($this->routes as $route) {
             if (
-                !preg_match("#^{$route['path']}$#", $path) || 
+                !preg_match("#^{$route['path']}$#", $path) ||
                 $route['method'] !== $method
             ) {
                 continue;

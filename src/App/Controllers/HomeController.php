@@ -18,7 +18,7 @@ class HomeController
 
     public function home()
     {
-        dd($this->view);
-        echo 'home page';
+        $secret = 'fjkdsfjkd';
+        $this->view->render('/index.php');
     }
 }
